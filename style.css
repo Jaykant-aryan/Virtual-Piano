@@ -1,0 +1,186 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #10111b;
+    color: #f4f4f8;
+}
+
+.topbar {
+    padding: 28px 20px;
+    text-align: center;
+    background: #191a2b;
+    border-bottom: 1px solid #303148;
+}
+
+.topbar h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+}
+
+.topbar p {
+    margin: 0;
+    color: #b7b8cb;
+}
+
+.container {
+    width: min(1100px, 94%);
+    margin: 30px auto;
+    display: grid;
+    gap: 24px;
+}
+
+.panel {
+    min-width: 0;
+    padding: 24px;
+    background: #1a1b2b;
+    border: 1px solid #303148;
+    border-radius: 16px;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+.panel p {
+    line-height: 1.6;
+    color: #c5c6d8;
+}
+
+/* Horizontal scrolling keeps all 36 keys accessible. */
+.piano-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 12px 0 18px;
+    margin-top: 18px;
+    touch-action: pan-x;
+}
+
+.piano {
+    --white-width: 44px;
+    --black-width: 28px;
+    --white-height: 180px;
+    --black-height: 112px;
+
+    position: relative;
+    display: block;
+    width: calc(var(--white-width) * 21);
+    height: var(--white-height);
+    user-select: none;
+    touch-action: pan-x;
+}
+
+/* Every white key gets a fixed position. */
+.piano-key {
+    position: absolute;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 10px;
+    font: bold 12px Arial, sans-serif;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+}
+
+.white-key {
+    width: var(--white-width);
+    height: var(--white-height);
+    background: #ffffff;
+    color: #252536;
+    border: 1px solid #b8b8c5;
+    border-radius: 0 0 5px 5px;
+    z-index: 1;
+}
+
+.black-key {
+    width: var(--black-width);
+    height: var(--black-height);
+    background: #242438;
+    color: #ffffff;
+    border: 1px solid #090910;
+    border-radius: 0 0 5px 5px;
+    z-index: 2;
+    padding-bottom: 8px;
+}
+
+/* Key highlight */
+.piano-key.active {
+    background: #8b7cff;
+    color: #ffffff;
+}
+
+/* Song player */
+textarea {
+    display: block;
+    width: 100%;
+    min-height: 80px;
+    padding: 14px;
+    resize: vertical;
+    border: 1px solid #42435c;
+    border-radius: 10px;
+    background: #11121e;
+    color: #ffffff;
+    font: inherit;
+}
+
+textarea:focus {
+    outline: 2px solid #8b7cff;
+    border-color: transparent;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.controls button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: #8b7cff;
+    color: white;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background: #7665ef;
+}
+
+.hint {
+    font-size: 13px;
+    color: #9c9db5 !important;
+}
+
+#song-status {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .topbar h1 {
+        font-size: 26px;
+    }
+
+    .panel {
+        padding: 16px;
+    }
+
+    .piano {
+        --white-width: 38px;
+        --black-width: 24px;
+        --white-height: 160px;
+        --black-height: 100px;
+    }
+}

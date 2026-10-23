@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Piano</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+    <header class="topbar">
+        <h1>🎹 Python Piano</h1>
+        <p>Your music. Your keys. Your creativity.</p>
+    </header>
+
+    <main class="container">
+        <section class="panel">
+            <h2>Virtual Piano</h2>
+            <p>Click a key or use your computer keyboard to play.</p>
+
+            <div class="piano-wrapper">
+                <div id="piano" class="piano"></div>
+            </div>
+
+            <p class="hint">
+                Use A–Z and 0–9 on your computer keyboard.
+            </p>
+            <p id="audio-status" role="status" aria-live="polite">
+                Loading piano sounds...
+            </p>
+        </section>
+
+        <section class="panel">
+            <h2>Song Player</h2>
+            <p>Enter notes separated by spaces.</p>
+
+            <textarea
+                id="song-input"
+                rows="3"
+                placeholder="C4 D4 E4 F4 G4"
+                aria-label="Enter song notes"
+            ></textarea>
+
+            <div class="controls">
+                <button id="play-song" type="button">▶ Play Song</button>
+                <button id="stop-song" type="button">■ Stop</button>
+                <button id="clear-song" type="button">Clear</button>
+            </div>
+
+            <p id="song-status" role="status" aria-live="polite">
+                Ready for your first melody.
+            </p>
+        </section>
+
+        <section class="panel">
+            <h2>Sound Credits</h2>
+            <p class="hint">
+                Piano samples: Salamander Grand Piano by Alexander Holm.
+                Licensed under Creative Commons Attribution 3.0 (CC BY 3.0).
+                Original library:
+                https://github.com/sfzinstruments/SalamanderGrandPiano
+            </p>
+        </section>
+    </main>
+
+    <!-- Audio library: load this before piano.js -->
+    <script src="https://cdn.jsdelivr.net/npm/tone@14.8.49/build/Tone.js"></script>
+
+    <!-- Your piano controls -->
+    <script src="{{ url_for('static', filename='js/piano.js') }}"></script>
+</body>
+</html>
